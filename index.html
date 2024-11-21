@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket Countdown</title>
+</head>
+<body>
+    <h1>Hit Socket Countdown</h1>
+    <button id="countdownBtn">Start Countdown</button>
+
+    <script>
+        document.getElementById('countdownBtn').addEventListener('click', () => {
+            // Emit event countdown saat tombol ditekan
+            fetch('/api/emit-countdown', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ run_id: '4444', action: 'not-sold' })
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
